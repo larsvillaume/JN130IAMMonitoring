@@ -1,5 +1,5 @@
 ﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-<!-- In this fragment you need to replace:
+<!-- In this fragment you need to replace::
 
 JN130 JN130
 IAM.Server IAM.Server
@@ -24,7 +24,7 @@ SYSTEM\CurrentControlSet\Services\Spooler SYSTEM\CurrentControlSet\Services\Spoo
   <Monitoring>
     <Discoveries>
   <!--   <Discovery ID="JN130.IAM.Server.Class.Discovery" Target="Windows!Microsoft.Windows.Server.OperatingSystem" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal"> -->
-    <Discovery ID="JN130.IAM.Server.Class.Discovery" Target="Windows!Microsoft.Windows.Server.OperatingSystem" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+    <Discovery ID="JN130.IAM.Server.Class.Discovery" Target="Windows!Microsoft.Windows.Server.Computer" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
 	  <!-- We choose Microsoft.Windows.Server.OperatingSystem as the preferred target class to ensure this will run on all Windows Servers, but wont create duplicates on clusters -->
 	    <Category>Discovery</Category>
         <DiscoveryTypes>
@@ -33,7 +33,7 @@ SYSTEM\CurrentControlSet\Services\Spooler SYSTEM\CurrentControlSet\Services\Spoo
           </DiscoveryClass>
         </DiscoveryTypes>
         <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.FilteredRegistryDiscoveryProvider">
-          <ComputerName>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName> <!-- You may need to add or remove Host references in this line depending on your target -->
+          <ComputerName>$Target/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName> <!-- You may need to add or remove Host references in this line depending on your target -->
           <RegistryAttributeDefinitions>
             <RegistryAttributeDefinition>
               <AttributeName>IAM.ServerRegKeyExists</AttributeName>
@@ -48,11 +48,11 @@ SYSTEM\CurrentControlSet\Services\Spooler SYSTEM\CurrentControlSet\Services\Spoo
             <Settings>
               <Setting>
                 <Name>$MPElement[Name="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Name>
-                <Value>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Value>
+                <Value>$Target/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Value>
               </Setting>
               <Setting>
                 <Name>$MPElement[Name="System!System.Entity"]/DisplayName$</Name>
-                <Value>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Value>
+                <Value>$Target/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Value>
               </Setting>
             </Settings>
           </InstanceSettings>
