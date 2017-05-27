@@ -51,5 +51,17 @@
       <PackageToBundle>false</PackageToBundle>
     </ManagementPackReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes" />
+    <Folder Include="Monitors" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Class.And.Discovery.Registry.KeyExists.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\Monitor.TimedScript.PowerShell.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VSAC\Microsoft.SystemCenter.OperationsManager.targets" />
 </Project>
